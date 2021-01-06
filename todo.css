@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-decoration: none;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50px;
+  background: #7fdfa8;
+}
+
+.container {
+  background-color: #151728;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 260px;
+  padding: 0 10px 10px;
+}
+
+.container .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  padding: 20px 30px;
+}
+
+.container .header span {
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
+
+.container .input-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.container .input-div input {
+  width: 100%;
+  background-color: #24273b;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.container .input-div input:focus {
+  outline: 0;
+}
+
+.container .input-div button {
+  padding: 10px 15px;
+  outline: none;
+  border: none;
+  background: #289d5a;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: 300ms all;
+  transition: 300ms all;
+  -webkit-box-shadow: 0 11px 30px -15px #32C671;
+          box-shadow: 0 11px 30px -15px #32C671;
+}
+
+.container .input-div button:hover {
+  background-color: #32C671;
+}
+
+.container .todos a {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 10px;
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.container .todos a .asdas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .todos a .chcbox {
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container .todos a .chcbox:focus {
+  outline: none;
+}
+
+.container .todos a span {
+  font-size: 15px;
+  display: block;
+  overflow: hidden;
+}
+
+.container .todos a .removeBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: 300ms all;
+  transition: 300ms all;
+}
+
+.container .todos a .removeBtn:focus {
+  outline: none;
+}
+
+.container .todos a .removeBtn:hover {
+  color: darkred;
+}
+/*# sourceMappingURL=todo.css.map */
