@@ -1,52 +1,85 @@
 let buttonAdd = document.getElementById("buttonAdd");
 let inputAdd = document.getElementById("inputAdd");
 let todosItems = document.getElementById("todosItems");
-let itemCheckButton = document.getElementById("itemCheckButton");
+let todos = [];
+const getTodosFromStorage = () => {
+  return JSON.parse(window.localStorage.getItem("todos"));
+};
+const setTodosFromStorage = (list) => {
+  window.localStorage.setItem("todos", JSON.stringify(list));
+};
+const hasUserTodos = getTodosFromStorage();
+const onCompleteClicked = (todo) => {
+  const id = todo.id;
+  const updatedTodo = todos.filter((t) => t.id === id)[0];
+  updatedTodo.complete = !updatedTodo.complete;
+  setTodosFromStorage(todos);
+  renderList(todos);
+};
+const onDeleteClicked = (todo) => {
+  const id = todo.id;
+  todos = todos.filter((t) => t.id !== id);
+  setTodosFromStorage(todos);
+  renderList(todos);
+};
+const renderList = (list) => {
+  todosItems.innerHTML = "";
+  list.map((todo) => {
+    const todoDom = renderTodo(todo);
+    todosItems.appendChild(todoDom);
+  });
+};
+const renderTodo = (todo) => {
+  var todoContainer = document.createElement("a");
+  var div = document.createElement("div");
+  var completeButton = document.createElement("button");
+  var text = document.createElement("span");
+  var icon = document.createElement("i");
+  var removeButton = document.createElement("button");
 
+  text.innerText = todo.text;
+  removeButton.classList.add("removeBtn");
+  icon.classList.add("fas");
+  icon.classList.add("fa-times");
+  removeButton.addEventListener("click", () => onDeleteClicked(todo));
+  removeButton.appendChild(icon);
+  completeButton.classList.add("chcbox");
+  completeButton.addEventListener("click", () => onCompleteClicked(todo));
+  div.classList.add("asdas");
+  div.appendChild(completeButton);
+  div.appendChild(text);
+  todoContainer.appendChild(div);
+  todoContainer.appendChild(removeButton);
 
+  if (todo.complete) {
+    text.style.textDecoration = "line-through";
+    completeButton.style.backgroundImage = "url(./images.png)";
+  }
 
-buttonAdd.addEventListener("click", function(){
-    var ItemsA = document.createElement("a");
-    var itemDiv = document.createElement("div");
-    var itemCheckButton = document.createElement("button");
-    var todoTextSpan = document.createElement("span");
-    var iEtiketi = document.createElement("i");
-    var removeButton = document.createElement("button");
+  return todoContainer;
+};
 
-    todosItems.appendChild(ItemsA);
-    ItemsA.appendChild(itemDiv);
-    itemDiv.appendChild(itemCheckButton);
-    itemDiv.classList.add("asdas");
-    itemCheckButton.classList.add("chcbox");
-    itemDiv.appendChild(todoTextSpan);
-    todoTextSpan.innerText = inputAdd.value;
+window.onload = function () {
+  buttonAdd.addEventListener("click", function () {
+    const text = inputAdd.value;
+    const todo = {
+      id: new Date().getTime(),
+      text: text,
+      create_date: new Date(),
+      complete: false,
+      deleted: false
+    };
 
-    ItemsA.appendChild(removeButton);
-    removeButton.classList.add("removeBtn");
-    removeButton.appendChild(iEtiketi);
-    iEtiketi.classList.add("fas");
-    iEtiketi.classList.add("fa-times");
+    todos.push(todo);
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+    renderList(todos);
+  });
 
-    inputAdd.innerText = " ";
+  if (hasUserTodos) {
+    todos = getTodosFromStorage();
+  } else {
+    setTodosFromStorage([]);
+  }
 
-    removeButton.addEventListener("click" ,function(){
-        todosItems.removeChild(ItemsA);
-    })
-
-    itemCheckButton.addEventListener("click",function(){
-        itemCheckButton.style.backgroundImage = "url('images.png')";
-        todoTextSpan.style.textDecoration ="line-through";
-    })
-
-    itemCheckButton.addEventListener("dblclick",function(){
-        itemCheckButton.style.backgroundImage = "url('')";
-        todoTextSpan.style.textDecoration ="none";
-    })
-
-    
-    
-})
-
-
-alert("Checkbox da click ve dblclick eventleri mevcuttur.Hayrını görün :D");
-
+  renderList(todos);
+};
